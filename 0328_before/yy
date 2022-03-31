@@ -1,0 +1,9 @@
+11AA bb # test
+mary & john
+Dear John
+o Who i hate to write
+5201314
+No three N0 four
+grep -rn . -e "John" | awk '{split ($0,a,":");print a[1]}' | sort -u | xargs sed -i '' "s/John/Robin/g"         replace
+grep -rn . -e 'Testings_Software_New' | awk '{split ($0,a,":");print a[1]}' | sort -u | xargs sed -i 's/Testings_Software_New/Testing_Software_New/g'
+grep -rn . -e ${1} | awk '{split ($0,a,":");print a[1]}' | sort -u | xargs sed -i s/${1}/${2}/g // bash
