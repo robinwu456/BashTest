@@ -11,9 +11,16 @@ function GetUserName(){ echo $USER; }
 function IsHostsConnected(){ ping -c 1 -w 1 $1 > /dev/null; echo $?; }
 # $1=$#, $2=args count
 function VerifyArgsCount(){
-        if [ ! $1 -eq $2 ]; then
-                echo "請輸入$2個參數!"
-                exit
+        #if [ ! $1 -eq $2 ]; then
+        #        echo "請輸入$2個參數!"
+        #        exit
+        #fi
+
+	#[ ! $1 -eq $2 ] && (return 1; echo "請輸入$2個參數!") || return 0
+
+	if [ ! $1 -eq $2 ]; then
+                 echo "請輸入$2個參數!"
+                 exit
         fi
 }
 
@@ -50,5 +57,30 @@ function EvenAdd(){
 }
 
 function AddUser(){
+	[ $(IsUserExist $1) == 0 ] && echo $1"已存在" && return
 	sudo useradd -m -s /bin/bash $1
+	echo $1:$1 | sudo chpasswd
+}
+
+function DeleteUser(){
+	[ $(IsUserExist $1) == 1 ] && echo $1"不存在" && return
+        sudo userdel -r $1 > /dev/null
+}
+
+function ChangeUserPwd(){
+	#[ $(VerifyArgsCount $# 2) == 1 ] && return
+	[ $(IsUserExist $1) == 1 ] && echo $1"不存在" && return
+	echo $1:$2 | sudo chpasswd
+}
+
+function AddMultiUser(){
+	for user in $@; do
+		AddUser $user
+	done
+}
+
+function DelMultiUser(){
+	for user in $@; do
+                DeleteUser $user
+        done
 }
