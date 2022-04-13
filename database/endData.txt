@@ -1,0 +1,10 @@
+create table year (id varchar(4),name varchar(20),area varchar(2),grade varchar(1),bonus integer);
+insert into year values ("s001","john","north","A",85500);
+insert into year values ("s005","mary","north","A",98000);
+insert into year values ("s003","lee","center","B",70000);
+insert into year values ("s007","kao","center","B",64000);
+insert into year values ("s002","wang","south","C",250000);
+insert into year values ("s004","victor","south","A",100000);
+insert into year values ("s006","long","east","C",140000);
+insert into year values ("s009","maria","north","B",10000);
+

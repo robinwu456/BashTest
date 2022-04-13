@@ -1,0 +1,12 @@
+CREATE TABLE person ( name varchar(20) , tel varchar(15) , sex varchar(1) , salary integer );
+insert into person (name , tel , sex , salary ) values ( 'name', '0911000111', 'M', 30000 ) ;
+insert into person ( name,tel ,sex ,salary ) values ( 'marry' , '0922000222' ,'F' ,25000);
+insert into person (name ,tel,sex,salary) values ( 'lee' ,'0933000333' , 'N' ,33000 );
+insert into person (name,tel,sex,salary) values ('wang','0944000444','M',50000);
+update person set sex="M" where name="lee" ;
+update person set name='john' where name ='name';
+insert into person (name,tel) values ("victor",'09123456789');
+insert into person (name,salary) values ("babe",46000);
+update person set sex="M", salary=55000 where name='victor' ;
+update person set tel='0955566566', sex='F' where name='babe';
+
