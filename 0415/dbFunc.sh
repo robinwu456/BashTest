@@ -18,37 +18,37 @@ case $ans in
 		read -p "建立$accountstart幾號開始: " start
 		read -p "到$accountstart幾號結束: " end
 		./std_user_and_privilege.sh $accountstart $start $end
-		./addusers.sh
+		./dbFunc.sh
 		;;
 	2)
 		./std_ask.sh
-		./addusers.sh
+		./dbFunc.sh
 		;;
 	3)
 		./changePwd.sh
-		./addusers.sh
+		./dbFunc.sh
 		;;
 	4)
 		read -p "建立帳號開頭: " accountstart
 		read -p "刪除$accountstart幾號開始: " start
                 read -p "到$accountstart幾號結束: " end
 		./std_delete.sh $accountstart $start $end
-		./addusers.sh
+		./dbFunc.sh
 		;;
 	5)
 		read -p "刪除帳號: " account
 		sudo mariadb -e "drop user '$account'@'localhost'"
-		./addusers.sh
+		./dbFunc.sh
 		;;
 	6)
 		sudo mariadb -e "select user,host,password,select_priv,insert_priv from mysql.user;"
-		./addusers.sh
+		./dbFunc.sh
 		;;
 	7)
 		exit
 		;;
 	*)
 		echo '請輸入1-7'
-		./addusers.sh
+		./dbFunc.sh
 		;;
 esac
